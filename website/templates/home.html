@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block title %}Assignments{% endblock %}
+
+{% block content %}
+
+<h1 align="center">Upcoming Assignments</h1>
+
+<div align="center" class="mb-4">
+    <a href="/add-assignment" class="btn btn-success">
+        + Add Assignment
+    </a>
+</div>
+
+{% if assignments %}
+
+    {% for assignment in assignments %}
+    <div class="card mb-3 shadow-sm">
+
+        <div class="card-body">
+
+            {% if assignment.completed %}
+                <h5 class="card-title">
+                    <s>{{ assignment.course }}</s>
+                </h5>
+
+                <p class="card-text">
+                    <s>{{ assignment.title }}</s>
+                </p>
+
+                <span class="badge badge-success">
+                    Completed
+                </span>
+
+            {% else %}
+                <h5 class="card-title">
+                    {{ assignment.course }}
+                </h5>
+
+                <p class="card-text">
+                    {{ assignment.title }}
+                </p>
+
+                <small class="text-muted">
+                    Due: {{ assignment.due_date }}
+                </small>
+
+                <br><br>
+
+                <a href="/complete-assignment/{{ assignment.id }}"
+                   class="btn btn-success btn-sm">
+                    ✓ Complete
+                </a>
+
+                <a href="/edit-assignment/{{ assignment.id }}"
+                   class="btn btn-warning btn-sm">
+                    Edit
+                </a>
+
+                <a href="/delete-assignment/{{ assignment.id }}"
+                   class="btn btn-danger btn-sm"
+                   onclick="return confirm('Delete this assignment?')">
+                    Delete
+                </a>
+            {% endif %}
+
+        </div>
+
+    </div>
+    {% endfor %}
+
+{% else %}
+
+    <div class="text-center mt-5">
+        <h4>No assignments yet 📚</h4>
+        <p>Click "Add Assignment" to get started.</p>
+    </div>
+
+{% endif %}
+
+{% endblock %}

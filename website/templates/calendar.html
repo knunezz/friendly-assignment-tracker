@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}
+Calendar
+{% endblock %}
+
+{% block content %}
+
+<h1 align="center">Assignment Calendar</h1>
+
+<div id="calendar"></div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+    var calendarEl = document.getElementById('calendar');
+
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+
+        initialView: 'dayGridMonth',
+
+        events: [
+            {% for assignment in assignments %}
+            {
+                title: "{{ assignment.course }} - {{ assignment.title }}",
+                start: "{{ assignment.due_date }}"
+            },
+            {% endfor %}
+        ]
+
+    });
+
+    calendar.render();
+
+});
+</script>
+
+{% endblock %}

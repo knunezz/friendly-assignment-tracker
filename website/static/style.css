@@ -1,0 +1,19 @@
+body {
+    background-color: #f7f7f7;
+}
+
+.navbar {
+    background-color: #1d3a77 !important;
+}
+
+h1 {
+    color: #1d3a77;
+}
+
+#calendar {
+    max-width: 1000px;
+    margin: 20px auto;
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+}

@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Completed Assignments{% endblock %}
+
+{% block content %}
+
+<h1 align="center">Completed Assignments ✅</h1>
+
+{% if assignments %}
+
+    {% for assignment in assignments %}
+    <div class="card mb-3">
+
+        <div class="card-body">
+
+            <h5>
+                <s>{{ assignment.course }}</s>
+            </h5>
+
+            <p>
+                <s>{{ assignment.title }}</s>
+            </p>
+
+            <small>
+                Due: {{ assignment.due_date }}
+            </small>
+
+        </div>
+
+    </div>
+    {% endfor %}
+
+{% else %}
+
+    <div class="text-center mt-5">
+        <h4>No completed assignments yet.</h4>
+    </div>
+
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Assignment{% endblock %}
+
+{% block content %}
+
+<h1 align="center">Edit Assignment</h1>
+
+<form method="POST">
+
+    <div class="form-group">
+        <label>Course</label>
+        <input type="text"
+               class="form-control"
+               name="course"
+               value="{{ assignment.course }}">
+    </div>
+
+    <div class="form-group">
+        <label>Assignment</label>
+        <input type="text"
+               class="form-control"
+               name="title"
+               value="{{ assignment.title }}">
+    </div>
+
+    <div class="form-group">
+        <label>Due Date</label>
+        <input type="date"
+               class="form-control"
+               name="due_date"
+               value="{{ assignment.due_date }}">
+    </div>
+
+    <br>
+
+    <button type="submit"
+            class="btn btn-primary">
+        Save Changes
+    </button>
+    <a href="javascript:history.back()" class="btn btn-secondary">
+        ← Back
+    </a>
+    
+
+</form>
+
+{% endblock %}
