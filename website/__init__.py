@@ -6,10 +6,10 @@ db = SQLAlchemy()
 DB_NAME = "database.db"
 
 def create_app():
-    # initialized app
+    # Create the Flask application, the actual website.
     app = Flask(__name__)
 
-    # secures cookies/session data
+    # Secret key is used to secure sessions and cookies.
     app.config['SECRET_KEY'] = 'abcd abcd'
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
     print(app.instance_path)
@@ -27,6 +27,7 @@ def create_app():
     create_database(app)
 
     login_manager = LoginManager()
+    # Users who are not logged in will be redirected here.
     login_manager.login_view = 'auth.login'
     login_manager.init_app(app)
 
@@ -37,8 +38,7 @@ def create_app():
     return app
 
 def create_database(app):
-    print(path.exists('instance/' + DB_NAME))
-
+    # Check whether the database file already exists.
     if not path.exists('instance/' + DB_NAME):
         with app.app_context():
             db.create_all()

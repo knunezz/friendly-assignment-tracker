@@ -3,22 +3,22 @@
 {% block title %}Assignments{% endblock %}
 
 {% block content %}
-
+<!-- main page heading, h1 stands for heading and how important the heading is -->
 <h1 align="center">Upcoming Assignments</h1>
-
+<!-- button for creating a new assignment -->
 <div align="center" class="mb-4">
     <a href="/add-assignment" class="btn btn-success">
         + Add Assignment
     </a>
 </div>
-
+<!-- only shows assignment cards if assignments exist -->
 {% if assignments %}
-
+<!-- loops through every assignment that is passed from views.py -->
     {% for assignment in assignments %}
     <div class="card mb-3 shadow-sm">
 
         <div class="card-body">
-
+            <!-- displays completed assignments differently -->
             {% if assignment.completed %}
                 <h5 class="card-title">
                     <s>{{ assignment.course }}</s>
@@ -56,7 +56,7 @@
                    class="btn btn-warning btn-sm">
                     Edit
                 </a>
-
+]
                 <a href="/delete-assignment/{{ assignment.id }}"
                    class="btn btn-danger btn-sm"
                    onclick="return confirm('Delete this assignment?')">
