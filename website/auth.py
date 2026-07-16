@@ -25,7 +25,7 @@ def login():
             if check_password_hash(user.password,password):
                 flash('Logged in successfully!',category='success')
                 # Creates the user's session.
-                login_user(user,remember=True)
+                login_user(user,remember=False)
                 return redirect(url_for('views.home'))
             else:
                 flash('Incorrect password, try again.',category='error')
@@ -49,7 +49,7 @@ def sign_up():
         password2 = request.form.get('password2')
 
         user = get_user_by_email(email)
-        
+
         if user:
             flash('Email already exists.', category= 'error')
         elif len(email) < 4:
