@@ -13,7 +13,7 @@ h1 {
 #calendar {
     max-width: 1000px;
     margin: 20px auto;
-    background: white;
+    background: rgb(255, 255, 255);
     padding: 15px;
     border-radius: 12px;
 }

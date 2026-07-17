@@ -37,13 +37,18 @@
                     {{ assignment.course }}
                 </h5>
 
+
                 <p class="card-text">
                     {{ assignment.title }}
                 </p>
-
+                
                 <small class="text-muted">
                     Due: {{ assignment.due_date }}
                 </small>
+                
+                <span class = "badge badge-succes">
+                    {{assignment.category}}
+                </span>
 
                 <br><br>
 
@@ -56,7 +61,7 @@
                    class="btn btn-warning btn-sm">
                     Edit
                 </a>
-]
+
                 <a href="/delete-assignment/{{ assignment.id }}"
                    class="btn btn-danger btn-sm"
                    onclick="return confirm('Delete this assignment?')">

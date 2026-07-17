@@ -42,7 +42,7 @@ def add_assignment():
         course = request.form.get('course')
         title = request.form.get('title')
         due_date_str = request.form.get('due_date')
-
+        category = request.form.get('category')
         # Convert the HTML date into a Python date object.
         due_date = datetime.strptime(due_date_str,'%Y-%m-%d').date()
 
@@ -50,25 +50,18 @@ def add_assignment():
             course=course,
             title=title,
             due_date=due_date,
-            user_id=current_user.id
-        )
+            category=category,
+            user_id=current_user.id)
 
         # db.session.add tells the sqlalchemy that I wanna save this object.
         db.session.add(assignment)
         #this saves the changes to the database
         db.session.commit()
 
-        flash(
-            'Assignment added!',
-            category='success'
-        )
         #redirect sends users to another page, aka back to assignments page
         return redirect(url_for('views.home'))
 
-    return render_template(
-        'add_assignment.html',
-        user=current_user
-    )
+    return render_template('add_assignment.html',user=current_user)
 
 @views.route('/delete-assignment/<int:id>')
 @login_required
@@ -78,7 +71,6 @@ def delete_assignment(id):
     if assignment:
         db.session.delete(assignment)
         db.session.commit()
-        flash('Assignment deleted.', category='success')
                     
     return redirect(url_for('views.home'))
 
@@ -92,6 +84,7 @@ def edit_assignment(id):
     if not assignment:
         flash('Assignment not found.', category='error')
         return redirect(url_for('views.home'))
+    
 
     if request.method == 'POST':
 
@@ -101,25 +94,20 @@ def edit_assignment(id):
         assignment.title = request.form.get('title')
         
         due_date_str = request.form.get('due_date')
-        assignment.due_date = datetime.strptime(
-            due_date_str,
-            '%Y-%m-%d'
-        ).date()
+        assignment.category = request.form.get('category')
+        assignment.due_date = datetime.strptime(due_date_str,'%Y-%m-%d').date()
 
         db.session.commit()
-
-        flash(
-            'Assignment updated!',
-            category='success'
-        )
+        from_page = request.form.get('from_page')
+        #need this to refrence the currenct page we are on
+        if from_page == 'completed':
+            return redirect(url_for('views.completed'))
 
         return redirect(url_for('views.home'))
+    
+    from_page = request.args.get('from_page')   
 
-    return render_template(
-        'edit_assignment.html',
-        assignment=assignment,
-        user=current_user
-    )
+    return render_template('edit_assignment.html', assignment=assignment, user=current_user, from_page=from_page)
 
 
 @views.route('/completed')
@@ -129,10 +117,9 @@ def completed():
     # Display assignments that have been marked complete.
     assignments = Assignment.query.filter_by(
         user_id=current_user.id,
-        completed=True
-    ).order_by(
-        Assignment.due_date
-    ).all()
+        completed=True).order_by(Assignment.due_date).all()
+    
+
 
     return render_template(
         'completed.html',
@@ -150,12 +137,22 @@ def complete_assignment(id):
         assignment.completed = True
         db.session.commit()
 
-        flash(
-            'Assignment completed!',
-            category='success'
-        )
+
 
     return redirect(url_for('views.home'))
+
+@views.route('/uncomplete-assignment/<int:id>')
+@login_required
+def uncomplete_assignment(id):
+
+    assignment = get_user_assignment(id)
+    # Make sure users can only edit their own assignments
+    if assignment:
+        assignment.completed = False
+        db.session.commit()
+
+    return redirect(url_for('views.completed'))
+        
 
 
 @views.route('/calendar')
@@ -163,12 +160,9 @@ def complete_assignment(id):
 def calendar():
 
     # Get all assignments for the calendar view.
-    assignments = Assignment.query.filter_by(
-        user_id=current_user.id
-    ).all()
+    assignments = Assignment.query.filter_by(user_id=current_user.id).all()
 
     return render_template(
         'calendar.html',
         assignments=assignments,
-        user=current_user
-    )
+        user=current_user)

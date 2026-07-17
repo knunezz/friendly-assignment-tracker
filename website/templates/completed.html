@@ -17,6 +17,7 @@
                 <s>{{ assignment.course }}</s>
             </h5>
 
+
             <p>
                 <s>{{ assignment.title }}</s>
             </p>
@@ -24,6 +25,28 @@
                 Due: {{ assignment.due_date }}
             </small>
 
+            <span class = "badge badge-succes">
+                {{assignment.category}} ✅
+            </span>
+
+            <br><br>
+
+            <a href="/edit-assignment/{{ assignment.id }}?from_page=completed"
+                class="btn btn-warning btn-sm">
+                Edit
+            </a>
+
+            <a href="/delete-assignment/{{ assignment.id }}"
+                class="btn btn-danger btn-sm"
+                onclick="return confirm('Delete this assignment?')">
+                Delete
+            </a>
+            <br><br>
+
+            <a href="/uncomplete-assignment/{{ assignment.id }}"
+                class="btn btn-secondary btn-sm">
+                Uncomplete
+            </a>
         </div>
 
     </div>

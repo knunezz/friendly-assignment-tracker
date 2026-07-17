@@ -10,6 +10,7 @@ class Assignment(db.Model):
     course = db.Column(db.String(100))
     title = db.Column(db.String(200))
     due_date = db.Column(db.Date)
+    category = db.Column(db.String(50))
     # Tracks whether the assignment has been completed.
     completed = db.Column(
         db.Boolean,
