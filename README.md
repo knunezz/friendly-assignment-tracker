@@ -21,7 +21,7 @@ Bootstrap
 FullCalenda
 
 ## Why I Built This
-I created this project to gain experience with full-stack web development while building something I could actually use as a student. Through this project, I learned how to work with databases, user authentication, CRUD operations, templates, and dynamic calendar integrations.
+I created this project to gain experience with full-stack web development while building something I could actually use as a student. Through this project, I learned how to work with databases, user authentication, CRUD operations, templates, and calendar integrations.
 
 ## Screenshots
 
