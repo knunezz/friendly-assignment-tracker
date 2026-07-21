@@ -166,10 +166,10 @@ def calendar():
     assignments = Assignment.query.filter_by(user_id=current_user.id).all()
 
     colors = {
-        "Exam": "red",
-        "Quiz": "purple",
-        "Classwork": "gold",
-        "Homework": "orange"
+        "Exam": "#F79090",
+        "Quiz": "#C59BF8",
+        "Classwork": "#E5C975",
+        "Homework": "#F59E6B"
     }
     return render_template(
         'calendar.html',

@@ -36,8 +36,8 @@ h1 {
 
 #calendar {
     max-width: 1000px;
-    margin: 20px auto;
+    margin: 40px auto;
     background: #FFF7FB;
-    padding: 15px;
-    border-radius: 15px;
+    padding: 40px;
+    border-radius: 20px;
 }

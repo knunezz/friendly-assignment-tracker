@@ -17,11 +17,10 @@ document.addEventListener('DOMContentLoaded', function () {
         events: [
             {% for assignment in assignments %}
             {
-                title: "{{ assignment.course }} - {{ assignment.title }}",
+                title: "{{ assignment.course }} - {{ assignment.category }}",
                 start: "{{ assignment.due_date }}",
                 color: "{{ colors[assignment.category] }}"
-
-                
+   
             },
             {% endfor %}
         ]
