@@ -42,6 +42,12 @@
                     {{ assignment.title }}
                 </p>
                 
+                {% if assignment.notes %}
+                <p class="text-muted">
+                    {{ assignment.notes }}
+                </p>
+                {% endif %}
+
                 <small class="text-muted">
                     Due: {{ assignment.due_date }}
                 </small>

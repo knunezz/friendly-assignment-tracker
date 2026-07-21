@@ -9,29 +9,24 @@ Calendar
 <h1 align="center">Assignment Calendar</h1>
 
 <div id="calendar"></div>
-
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-
     var calendarEl = document.getElementById('calendar');
-
     var calendar = new FullCalendar.Calendar(calendarEl, {
-
         initialView: 'dayGridMonth',
-
         events: [
             {% for assignment in assignments %}
             {
                 title: "{{ assignment.course }} - {{ assignment.title }}",
-                start: "{{ assignment.due_date }}"
+                start: "{{ assignment.due_date }}",
+                color: "{{ colors[assignment.category] }}"
+
+                
             },
             {% endfor %}
         ]
-
     });
-
     calendar.render();
-
 });
 </script>
 

@@ -42,6 +42,7 @@ def add_assignment():
         course = request.form.get('course')
         title = request.form.get('title')
         due_date_str = request.form.get('due_date')
+        notes = request.form.get('notes')
         category = request.form.get('category')
         # Convert the HTML date into a Python date object.
         due_date = datetime.strptime(due_date_str,'%Y-%m-%d').date()
@@ -51,6 +52,7 @@ def add_assignment():
             title=title,
             due_date=due_date,
             category=category,
+            notes=notes,
             user_id=current_user.id)
 
         # db.session.add tells the sqlalchemy that I wanna save this object.
@@ -94,6 +96,7 @@ def edit_assignment(id):
         assignment.title = request.form.get('title')
         
         due_date_str = request.form.get('due_date')
+        assignment.notes = request.form.get('notes')
         assignment.category = request.form.get('category')
         assignment.due_date = datetime.strptime(due_date_str,'%Y-%m-%d').date()
 
@@ -162,7 +165,14 @@ def calendar():
     # Get all assignments for the calendar view.
     assignments = Assignment.query.filter_by(user_id=current_user.id).all()
 
+    colors = {
+        "Exam": "red",
+        "Quiz": "purple",
+        "Classwork": "gold",
+        "Homework": "orange"
+    }
     return render_template(
         'calendar.html',
         assignments=assignments,
+        colors=colors,
         user=current_user)

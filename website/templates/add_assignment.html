@@ -12,33 +12,50 @@ Add Assignment
     <input
         type="text"
         name="course"
-        class="form-control">
+        class="form-control"
+        required>
     <b>
 
     <label>Assignment</label>
     <input
         type="text"
         name="title"
-        class="form-control">
+        class="form-control"
+        required>
     <br>
+    <div class="form-group">
+        <label>Notes</label>
+        <textarea
+            name="notes"
+            class="form-control"
+            rows="4"
+            placeholder="Assignment details.."></textarea>
+    </div>
 
 
     <label>Due Date</label>
     <input
         type="date"
         name="due_date"
-        class="form-control">
+        class="form-control"
+        required>
     <br>
     <div class="form-group">
         <label>Assignment Type</label>
         <select
             name="category"
-            class="form-control">
+            class="form-control"
+            required>
 
-            <option value= "Homework"> Homework </option>
-            <option value= "Classwork"> Classwork </option>
-            <option value= "Quiz"> Quiz </option>
-            <option value= "Exam"> Exam </option>
+            
+            <option value="" selected disabled>
+                Select Assignment Type
+            </option>
+
+            <option value="Homework">Homework</option>
+            <option value="Classwork">Classwork</option>
+            <option value="Quiz">Quiz</option>
+            <option value="Exam">Exam</option>
         </select>
     </div>
 

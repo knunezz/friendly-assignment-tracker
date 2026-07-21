@@ -27,6 +27,13 @@
                name="title"
                value="{{ assignment.title }}">
     </div>
+    <div class="form-group">
+        <label>Notes</label>
+        <textarea
+            name="notes"
+            class="form-control"
+            rows="4">{{ assignment.notes }}</textarea>
+    </div>
 
     <div class="form-group">
         <label>Due Date</label>
@@ -39,13 +46,12 @@
         <label>Assignment Type</label>
         <select
             name="category"
-            class="form-control"
-            value="{{ assignment.category }}">
+            class="form-control">
 
-            <option value="Homework" {% if  value == "Homework" %}selected{% endif %}> Homework </option>
-            <option value="Classwork" {% if value == "Classwork"%}selected{% endif %}> Classwork </option>
-            <option value= "Quiz" {% if value == "Quiz"%}selected{% endif %}> Quiz </option>
-            <option value= "Exam" {% if value == "Exam"%}selected{% endif %}> Exam </option>
+            <option value="Homework" {% if  assignment.category == "Homework" %}selected{% endif %}> Homework </option>
+            <option value="Classwork" {% if assignment.category == "Classwork"%}selected{% endif %}> Classwork </option>
+            <option value= "Quiz" {% if assignment.category == "Quiz"%}selected{% endif %}> Quiz </option>
+            <option value= "Exam" {% if assignment.category == "Exam"%}selected{% endif %}> Exam </option>
         </select>
 
     </div>
