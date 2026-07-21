@@ -1,19 +1,43 @@
 body {
-    background-color: #f7f7f7;
+    background-color: #FFF7FB;
+    color: #3D3D3D;
 }
 
+.btn-add {
+    background-color: #D88BB8;
+    color: white;
+}
+
+.btn-edit {
+    background-color: #F6C85F;
+    color: white;
+}
+.btn-delete {
+    background-color: #E98B8B;
+    color: white;
+}
+
+.btn-back {
+    background-color:#C8B6FF;
+    color: white;
+}
+
+.btn-completed {
+    background-color: #91d9b4;
+    color: white;
+}
 .navbar {
-    background-color: #1d3a77 !important;
+    background-color: #D88BB8 !important;
 }
 
 h1 {
-    color: #1d3a77;
+    color: #C75B9B;
 }
 
 #calendar {
     max-width: 1000px;
     margin: 20px auto;
-    background: rgb(255, 255, 255);
+    background: #FFF7FB;
     padding: 15px;
-    border-radius: 12px;
+    border-radius: 15px;
 }

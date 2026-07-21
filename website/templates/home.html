@@ -7,7 +7,7 @@
 <h1 align="center">Upcoming Assignments</h1>
 <!-- button for creating a new assignment -->
 <div align="center" class="mb-4">
-    <a href="/add-assignment" class="btn btn-success">
+    <a href="/add-assignment" class="btn btn-add">
         + Add Assignment
     </a>
 </div>
@@ -59,17 +59,17 @@
                 <br><br>
 
                 <a href="/complete-assignment/{{ assignment.id }}"
-                   class="btn btn-success btn-sm">
+                   class="btn btn-completed btn-sm">
                     ✓ Complete
                 </a>
 
                 <a href="/edit-assignment/{{ assignment.id }}"
-                   class="btn btn-warning btn-sm">
+                   class="btn btn-edit btn-sm">
                     Edit
                 </a>
 
                 <a href="/delete-assignment/{{ assignment.id }}"
-                   class="btn btn-danger btn-sm"
+                   class="btn btn-delete btn-sm"
                    onclick="return confirm('Delete this assignment?')">
                     Delete
                 </a>
