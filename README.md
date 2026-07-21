@@ -24,4 +24,15 @@ FullCalenda
 I created this project to gain experience with full-stack web development while building something I could actually use as a student. Through this project, I learned how to work with databases, user authentication, CRUD operations, templates, and dynamic calendar integrations.
 
 ## Screenshots
-(Adding later)
+
+## Home Page
+![Home Page](home.png)
+
+### Calendar View
+![Calendar View](calendar.png)
+
+### Add Assignment
+![Add Assignment](add-assignment.png)
+
+### Completed Assignments
+![Completed Assignments](completed.png)
