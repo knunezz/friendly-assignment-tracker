@@ -1,4 +1,5 @@
 body {
+    font-family: 'Nunito', sans-serif;
     background-color: #FFF7FB;
     color: #3D3D3D;
 }
@@ -31,13 +32,18 @@ body {
 }
 
 h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;   
     color: #C75B9B;
 }
-
+h2{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
 #calendar {
     max-width: 1000px;
-    margin: 40px auto;
+    margin: 25px auto;
     background: #FFF7FB;
-    padding: 40px;
+    padding: 15px;
     border-radius: 20px;
 }
